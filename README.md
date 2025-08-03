@@ -1,12 +1,36 @@
-# React + Vite
+# Prem Raj Anand - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built with React and Vite, showcasing my skills, projects, and experience as a full-stack developer.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Responsive Design**: Optimized for all devices and screen sizes
+- **Dark/Light Theme**: Toggle between dark and light modes
+- **Smooth Animations**: Powered by Framer Motion
+- **Contact Form**: Working contact form with backend integration
+- **Modern UI**: Clean and professional design with Tailwind CSS
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React, Vite, Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: Vercel/Netlify
+
+## 📁 Project Structure
+
+- **Components**: Reusable UI components (Navbar, ThemeToggle)
+- **Sections**: Main portfolio sections (About, Skills, Projects, Contact, etc.)
+- **Assets**: Images and other static files
+- **Animations**: Custom animation configurations
+
+## 🚀 Quick Start
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start development server: `npm run dev`
+4. Build for production: `npm run build`
+
+## 📬 Contact
+
+Feel free to reach out to me at premrajanand91@gmail.com or connect with me on [LinkedIn](https://www.linkedin.com/in/premrajanand-87).

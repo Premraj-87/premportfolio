@@ -14,7 +14,7 @@ export default function Contact() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // Form Submission
+  // ✅ Updated to your backend URL on Render
   const sendEmail = async (e) => {
     e.preventDefault();
 
@@ -27,7 +27,10 @@ export default function Contact() {
     };
 
     try {
-      const res = await axios.post("http://localhost:5000/send", data);
+      const res = await axios.post(
+        "https://premportfoliobackend.onrender.com/send", // ✅ Your live backend endpoint
+        data
+      );
       if (res.data.success) {
         alert("Message sent successfully!");
         e.target.reset();

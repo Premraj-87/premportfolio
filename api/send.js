@@ -2,44 +2,43 @@
 import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ success: false, error: "Method Not Allowed" });
-  }
+  if (req.method !== "POST") return res.status(405).json({ success: false, error: "Method not allowed" });
 
   const { name, email, message, companyName, timeElapsed } = req.body;
+  const secret = req.headers["x-secret-key"];
 
-  // Basic bot/spam protection
-  if (req.headers["x-secret-key"] !== process.env.FORM_SECRET_KEY) {
-    return res.status(403).json({ success: false, error: "Unauthorized request" });
-  }
+  if (secret !== process.env.FORM_SECRET_KEY)
+    return res.status(401).json({ success: false, error: "Unauthorized" });
 
-  if (companyName || timeElapsed < 2000) {
+  if (companyName || timeElapsed < 2000)
     return res.status(400).json({ success: false, error: "Bot detected" });
-  }
 
-  if (!name || name.length < 2 || !email || !email.includes("@") || !message || message.length < 10) {
-    return res.status(400).json({ success: false, error: "Invalid input" });
-  }
+  if (!name || name.length < 2) return res.status(400).json({ success: false, error: "Invalid name" });
+  if (!email || !email.includes("@")) return res.status(400).json({ success: false, error: "Invalid email" });
+  if (!message || message.length < 10) return res.status(400).json({ success: false, error: "Message too short" });
 
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS,
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
       },
     });
 
     await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_USER,
-      subject: "New Portfolio Contact Message",
-      text: `From: ${name} <${email}>\n\n${message}`,
+      from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER,
+      subject: "New message from portfolio",
+      html: `
+        <h3>From: ${name} (${email})</h3>
+        <p>${message}</p>
+      `,
     });
 
     return res.status(200).json({ success: true });
-  } catch (error) {
-    console.error("Email send error:", error);
-    return res.status(500).json({ success: false, error: "Server error sending email" });
+  } catch (err) {
+    console.error("Email send error:", err);
+    return res.status(500).json({ success: false, error: "Internal server error" });
   }
 }

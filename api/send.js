@@ -8,15 +8,16 @@ export default async function handler(req, res) {
 
   const { name, email, message, companyName, timeElapsed } = req.body;
 
-  if (!req.headers["x-secret-key"] || req.headers["x-secret-key"] !== process.env.NEXT_PUBLIC_FORM_SECRET_KEY) {
-    return res.status(403).json({ success: false, error: "Unauthorized" });
+  // Basic bot/spam protection
+  if (req.headers["x-secret-key"] !== process.env.FORM_SECRET_KEY) {
+    return res.status(403).json({ success: false, error: "Unauthorized request" });
   }
 
   if (companyName || timeElapsed < 2000) {
     return res.status(400).json({ success: false, error: "Bot detected" });
   }
 
-  if (!name || name.length < 2 || !email || !message || message.length < 10) {
+  if (!name || name.length < 2 || !email || !email.includes("@") || !message || message.length < 10) {
     return res.status(400).json({ success: false, error: "Invalid input" });
   }
 
@@ -29,18 +30,16 @@ export default async function handler(req, res) {
       },
     });
 
-    const mailOptions = {
+    await transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.MAIL_USER}>`,
       to: process.env.MAIL_USER,
-      subject: "New Message from Portfolio",
+      subject: "New Portfolio Contact Message",
       text: `From: ${name} <${email}>\n\n${message}`,
-    };
-
-    await transporter.sendMail(mailOptions);
+    });
 
     return res.status(200).json({ success: true });
-  } catch (err) {
-    console.error("Mail error:", err);
-    return res.status(500).json({ success: false, error: "Server error sending email." });
+  } catch (error) {
+    console.error("Email send error:", error);
+    return res.status(500).json({ success: false, error: "Server error sending email" });
   }
 }

@@ -1,27 +1,28 @@
+/* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 
 export default function Education() {
   const certificates = [
     {
-      title: "Figma Design Course – Udemy",
-      image: "/certificates/Figma.jpg", // can be PDF thumbnail
-      file: "/certificates/Figma.pdf",  // real PDF to open in new tab
+      title: "Web Develpopment – Ardent Computech",
+      image: "/certificates/Ardent_pvt.jpg", // can be PDF thumbnail
+      file: "/certificates/Ardent_pvt.pdf",  // real PDF to open in new tab
     },
     {
-      title: "Employability Skill Program – Mahindra Pride",
-      image: "/certificates/Employability_skill.jpg",
-      file: "/certificates/Employability_skill.pdf",
+      title: "JavaScript Essentials – Cisco Networking Academy",
+      image: "/certificates/JavaScript_Certificates.jpg",
+      file: "/certificates/JavaScript_Certificates.pdf",
     },
-    {
-      title: "Web Development – Internshala",
-      image: "/certificates/Webdevlopment_intern.jpg",
-      file: "/certificates/Webdevlopment_intern.pdf",
-    },
-    {
-      title: "Web Dev with PHP – Ardent Computech",
-      image: "/certificates/Ardent_pvt.jpg",
-      file: "/certificates/Ardent_pvt.pdf",
-    },
+    // {
+    //   title: "Web Development – Internshala",
+    //   image: "/certificates/Webdevlopment_intern.jpg",
+    //   file: "/certificates/Webdevlopment_intern.pdf",
+    // },
+    // {
+    //   title: "Web Dev with PHP – Ardent Computech",
+    //   image: "/certificates/Ardent_pvt.jpg",
+    //   file: "/certificates/Ardent_pvt.pdf",
+    // },
   ];
 
   return (
@@ -52,11 +53,11 @@ export default function Education() {
             <h3 className="text-2xl font-semibold mb-6">Education</h3>
             <div className="border-l-2 border-[#DAA520] pl-6 space-y-10">
               <div>
-                <h4 className="text-lg font-medium">MCA – Manipal University Jaipur</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">2025 – 2027</p>
+                <h4 className="text-lg font-medium">MCA – Chandigarh University</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">2024 – 2026</p>
                 <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 text-sm">
                   <li>Full-Stack Development</li>
-                  <li>Cloud & Scalable Systems</li>
+                  <li>Cloud Computing</li>
                 </ul>
               </div>
 
@@ -69,13 +70,7 @@ export default function Education() {
                 </ul>
               </div>
 
-              <div>
-                <h4 className="text-lg font-medium">Intermediate – Kendriya Vidyalaya Hinoo</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">2019 – 2021</p>
-                <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 text-sm">
-                  <li>PCM with Computer Science</li>
-                </ul>
-              </div>
+              
             </div>
           </motion.div>
 

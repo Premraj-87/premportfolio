@@ -7,11 +7,13 @@ import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
 import Skills from "./sections/Skills";
 import Contact from "./sections/Contact";
+import SocialSidebar from "./components/SocialSidebar";
 
 
 function App() {
   return (
     <div className="bg-white dark:bg-black text-black dark:text-white transition-colors duration-500">
+      <SocialSidebar />
       <ThemeToggle />
       <Intro />
       <Navbar/>

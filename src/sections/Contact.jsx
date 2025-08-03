@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+
 /* eslint-disable no-unused-vars */
 "use client";
 import { motion } from "framer-motion";
@@ -94,7 +94,7 @@ export default function Contact() {
                 <Mail size={18} /> premrajanand91@gmail.com
               </a>
               <a
-                href="https://www.linkedin.com/in/premrajanand-87"
+                href="https://www.linkedin.com/in/premrajanand87/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 justify-center hover:text-[#DAA520] transition"
@@ -102,12 +102,12 @@ export default function Contact() {
                 <Linkedin size={18} /> linkedin.com/in/premrajanand-87
               </a>
               <a
-                href="https://github.com/PremRajAnand"
+                href="https://github.com/Premraj-87"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 justify-center hover:text-[#DAA520] transition"
               >
-                <Github size={18} /> github.com/PremRajAnand
+                <Github size={18} /> github.com/Premraj-87
               </a>
             </div>
           </div>

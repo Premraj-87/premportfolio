@@ -7,24 +7,27 @@ gsap.registerPlugin(ScrollTrigger);
 const experiences = [
   {
     role: "Web Developer",
-    company: "Diliate",
-    location: "Remote, Faridabad, Haryana",
-    duration: "Apr 2024 – Feb 2025",
+    company: "BitFusion Technologies",
+    location: "Remote, Ranchi",
+    duration: "May 2024 – March 2025",
     description: [
-      "Developed responsive websites using HTML, CSS, JavaScript, and frameworks.",
-      "Maintained and optimized websites for performance, security, and functionality.",
-      "Communicated with clients to gather requirements and deliver documentation.",
+   "Developed scalable and responsive web applications using React, HTML, CSS, and JavaScript.",
+  "Redesigned and modernized the entire website architecture to improve UX/UI and performance.",
+  "Built a dynamic platform for clients to track and manage their carbon footprint data in real-time.",
+  "Integrated and maintained backend systems for secure data storage and efficient retrieval.",
+  "Collaborated directly with clients to gather detailed requirements and deliver tailored solutions with technical documentation."
     ],
   },
   {
-    role: "Web Developer Intern",
-    company: "Enord Aerospace",
-    location: "Remote, New Delhi",
-    duration: "Apr 2023 – Jun 2023",
+    role: "Frontend Developer",
+    company: "Serengstar (Startup)",
+    location: "On-site, Ranchi",
+    duration: "Feb 2023 – Aug 2023",
     description: [
-      "Supported debugging, testing, and code reviews.",
-      "Maintained/upgraded web pages for cross-browser and mobile compatibility.",
-      "Collaborated on feature implementation and UI/UX improvements.",
+      "Designed and developed the entire website for a music video competition platform.",
+  "Integrated a backend system to securely receive and store video submissions from users.",
+  "Optimized performance and UX to handle real traffic and engagement from genuine participants.",
+  "Implemented responsive UI/UX design ensuring compatibility across devices and browsers."
     ],
   },
   {
@@ -33,9 +36,10 @@ const experiences = [
     location: "Remote",
     duration: "Jun 2023 – Jul 2023",
     description: [
-      "Assisted in backend integration using PHP and MySQL.",
-      "Participated in agile meetings, sprint planning, and code reviews.",
-      "Contributed to front-end development and UI design.",
+       "Led the team during the internship to design and develop a complete e-commerce website for plant sales.",
+  "Focused heavily on UI/UX design to ensure a visually appealing and user-friendly shopping experience.",
+  "Handled both frontend and backend integration, building features like product listings, cart, and checkout.",
+  "Delivered a responsive, scalable, and performance-optimized solution using modern web development practices."
     ],
   },
 ];

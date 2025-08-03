@@ -1,4 +1,4 @@
-
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 "use client";
 import { motion } from "framer-motion";
@@ -10,6 +10,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 export default function Contact() {
   const [showScroll, setShowScroll] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState("");
+  const [formStatus, setFormStatus] = useState({ loading: false, success: null });
 
   useEffect(() => {
     const handleScroll = () => setShowScroll(window.scrollY > 300);
@@ -27,8 +28,7 @@ export default function Contact() {
       name: formData.get("name")?.trim(),
       email: formData.get("email")?.trim(),
       message: formData.get("message")?.trim(),
-      recaptchaToken,
-      secret: "asKDL9249LDfs" // FORM_SECRET_KEY
+      token: recaptchaToken,
     };
 
     if (!data.name || data.name.length < 2) {
@@ -52,21 +52,27 @@ export default function Contact() {
     }
 
     try {
+      setFormStatus({ loading: true, success: null });
+
       const res = await axios.post("/api/send", data, {
         headers: {
           "Content-Type": "application/json",
+          "x-secret-key": process.env.NEXT_PUBLIC_FORM_SECRET_KEY, // Loaded from .env
         },
       });
 
       if (res.data.success) {
+        setFormStatus({ loading: false, success: true });
         alert("Message sent successfully!");
         e.target.reset();
         setRecaptchaToken("");
       } else {
+        setFormStatus({ loading: false, success: false });
         alert(res.data.error || "Failed to send message.");
       }
     } catch (err) {
       console.error("Contact form error:", err);
+      setFormStatus({ loading: false, success: false });
       alert("Something went wrong. Please try again later.");
     }
   };
@@ -83,6 +89,7 @@ export default function Contact() {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
+        {/* LEFT - Contact Info */}
         <div className="md:w-1/3 w-full flex justify-center">
           <div className="bg-[#f1f5f9] dark:bg-[#0f172a] border border-gray-300 dark:border-gray-700 rounded-xl p-6 shadow-lg flex flex-col items-center gap-6">
             <h3 className="text-2xl font-semibold text-[#DAA520]">Let's Connect</h3>
@@ -113,6 +120,7 @@ export default function Contact() {
           </div>
         </div>
 
+        {/* RIGHT - Contact Form */}
         <div className="md:w-2/3 w-full">
           <h2 className="text-4xl font-bold text-[#DAA520] mb-8 text-center md:text-left">
             Contact Me
@@ -152,6 +160,7 @@ export default function Contact() {
                 />
               </div>
 
+              {/* reCAPTCHA */}
               <ReCAPTCHA
                 sitekey="6LeuJZkrAAAAAEM9bXcXYCwZjWzLRt_D1GgHp2Oa"
                 onChange={(token) => setRecaptchaToken(token)}
@@ -160,19 +169,22 @@ export default function Contact() {
 
               <button
                 type="submit"
+                disabled={formStatus.loading}
                 className="bg-[#DAA520] text-white px-6 py-2 rounded-md hover:bg-yellow-600 transition duration-300"
               >
-                Send Message
+                {formStatus.loading ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>
         </div>
       </motion.div>
 
+      {/* Footer */}
       <div className="mt-24 text-sm text-[#DAA520] text-center">
         © {new Date().getFullYear()} Prem Raj Anand
       </div>
 
+      {/* Scroll to Top */}
       {showScroll && (
         <button
           onClick={scrollToTop}

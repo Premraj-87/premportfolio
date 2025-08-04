@@ -1,4 +1,5 @@
-/* eslint-disable no-undef */
+// File: /api/send.js
+
 import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
@@ -6,40 +7,25 @@ export default async function handler(req, res) {
     return res.status(405).json({ success: false, error: "Method not allowed" });
   }
 
-  const { name, email, message, companyName, timeElapsed } = req.body;
+  const { name, email, message, honey, timestamp } = req.body;
   const secret = req.headers["x-secret-key"];
-  const expectedSecret = process.env.FORM_SECRET_KEY;
 
-  // Debug logging (only in development)
-  if (process.env.NODE_ENV !== "production") {
-    console.log("Client secret:", secret);
-    console.log("Expected secret:", expectedSecret);
+  if (secret !== process.env.FORM_SECRET) {
+    return res.status(401).json({ success: false, error: "Unauthorized" });
   }
 
-  // 🛡️ Security: Secret key validation
-  if (!secret || secret !== expectedSecret) {
-    return res.status(401).json({ success: false, error: "Unauthorized - Invalid or missing secret key" });
-  }
-
-  // 🕵️‍♂️ Spam/Bot Detection
-  if (companyName || timeElapsed < 2000) {
+  if (honey && honey.trim() !== "") {
     return res.status(400).json({ success: false, error: "Bot detected" });
   }
 
-  // ✅ Validation
-  if (!name || name.trim().length < 2) {
-    return res.status(400).json({ success: false, error: "Invalid name" });
+  if (!timestamp || Date.now() - timestamp < 5000) {
+    return res.status(400).json({ success: false, error: "Too fast" });
   }
 
-  if (!email || !email.includes("@")) {
-    return res.status(400).json({ success: false, error: "Invalid email" });
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, error: "Missing fields" });
   }
 
-  if (!message || message.trim().length < 10) {
-    return res.status(400).json({ success: false, error: "Message too short" });
-  }
-
-  // 📧 Send Email
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -50,21 +36,20 @@ export default async function handler(req, res) {
     });
 
     await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
+      from: `"${name}" <${email}>`,
       to: process.env.GMAIL_USER,
-      subject: "New message from portfolio",
+      subject: "New Portfolio Contact Form Message",
       html: `
-        <h2>📬 New Contact Form Submission</h2>
+        <h3>New Message from Portfolio</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <p><strong>Message:</strong><br/>${message}</p>
       `,
     });
 
     return res.status(200).json({ success: true });
   } catch (err) {
-    console.error("❌ Email send error:", err);
-    return res.status(500).json({ success: false, error: "Internal server error" });
+    console.error("Email error:", err);
+    return res.status(500).json({ success: false, error: "Server error" });
   }
 }

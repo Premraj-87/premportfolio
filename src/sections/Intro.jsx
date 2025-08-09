@@ -7,7 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { TypeAnimation } from "react-type-animation";
 import { FaArrowDown } from "react-icons/fa";
 import profileLight from "../assets/images/profile-light.png";
-import profileDark from  "../assets/images/profile-dark.png";
+import profileDark from "../assets/images/profile-dark.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,7 +64,7 @@ export default function Intro() {
         <div className="flex-1">
           <h1
             ref={nameRef}
-            className="text-4xl sm:text-5xl font-bold mb-4 text-[goldenrod] tracking-wide"
+            className="text-4xl sm:text-5xl font-bold mb-4 text-[#3BA397] tracking-wide"
           >
             {name.split("").map((char, i) => (
               <span key={i} className="inline-block char">
@@ -97,13 +97,13 @@ export default function Intro() {
             <a
               href="/assets/resume.pdf"
               download
-              className="px-6 py-2 border border-[goldenrod] text-[goldenrod] rounded hover:bg-[goldenrod] hover:text-white transition duration-300"
+              className="px-6 py-2 border border-[#3BA397] text-[#3BA397] rounded hover:bg-[#3BA397] hover:text-white transition duration-300"
             >
               Download CV
             </a>
             <a
               href="#contact"
-              className="px-6 py-2 border border-[goldenrod] text-[goldenrod] rounded hover:bg-[goldenrod] hover:text-white transition duration-300"
+              className="px-6 py-2 border border-[#3BA397] text-[#3BA397] rounded hover:bg-[#3BA397] hover:text-white transition duration-300"
             >
               Let’s Talk
             </a>
@@ -128,7 +128,7 @@ export default function Intro() {
       {/* Scroll down button */}
       <a
         href="#about"
-        className="absolute right-5 bottom-5 flex items-center gap-1 text-sm text-[goldenrod] hover:underline transition"
+        className="absolute right-5 bottom-5 flex items-center gap-1 text-sm text-[#3BA397] hover:underline transition"
       >
         scroll down <FaArrowDown size={12} />
       </a>

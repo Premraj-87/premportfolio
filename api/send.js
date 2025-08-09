@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // File: /api/send.js
 
 import nodemailer from "nodemailer";

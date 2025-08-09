@@ -60,7 +60,7 @@ export default function Skills() {
       className="py-20 px-4 bg-white dark:bg-black transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-[goldenrod] mb-10">
+        <h2 className="text-4xl font-bold text-center text-[#FF6F61] mb-10">
           Skills
         </h2>
 
@@ -72,22 +72,22 @@ export default function Skills() {
               onClick={() => setActiveTab(tab)}
               className={`px-5 py-2 rounded-full text-sm font-medium border ${
                 activeTab === tab
-                  ? "bg-[goldenrod] text-black"
-                  : "text-gray-700 dark:text-gray-300 border-gray-500"
-              }`}
+                  ? "bg-[#FF6F61] text-white"
+                  : "text-gray-700 dark:text-gray-300 border-gray-500 hover:border-[#FF6F61] hover:text-[#FF6F61]"
+              } transition-colors duration-300`}
             >
               {tab}
             </button>
           ))}
         </div>
 
-        {/* Skill Grid Container with proper padding */}
+        {/* Skill Grid */}
         <div className="px-6 sm:px-12 lg:px-24">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {skillData[activeTab].map((skill, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center justify-center p-4 border rounded-xl shadow-sm bg-gray-50 dark:bg-gray-900 dark:border-gray-700 hover:shadow-md transition duration-300"
+                className="flex flex-col items-center justify-center p-4 border rounded-xl shadow-sm bg-gray-50 dark:bg-gray-900 dark:border-gray-700 hover:shadow-md hover:border-[#FF6F61] transition duration-300"
               >
                 <div className="text-4xl mb-2">{skill.icon}</div>
                 <p className="text-sm font-medium text-gray-800 dark:text-gray-200">

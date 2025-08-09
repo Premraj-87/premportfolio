@@ -53,28 +53,41 @@ export default function About() {
         <div ref={contentRef}>
           <h2
             ref={titleRef}
-            className="text-4xl sm:text-5xl font-bold text-[goldenrod] mb-6"
+            className="text-4xl sm:text-5xl font-bold text-[#FF6F61] mb-6"
           >
             About Me
           </h2>
 
           <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-            I’m <span className="font-semibold text-[goldenrod]">Prem Raj Anand</span>, a creative and detail-oriented full-stack web developer who turns ideas into functional, scalable, and visually striking digital products.
+            I’m{" "}
+            <span className="font-semibold text-[#FF6F61]">
+              Prem Raj Anand
+            </span>
+            , a creative and detail-oriented full-stack web developer who turns
+            ideas into functional, scalable, and visually striking digital
+            products.
           </p>
 
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-            My stack includes <span className="font-medium text-[goldenrod]">React, Tailwind CSS, GSAP, and Node.js</span>. I thrive on crafting user-centric interfaces that are not just beautiful, but also fast and accessible.
+            My stack includes{" "}
+            <span className="font-medium text-[#FF6F61]">
+              React, Tailwind CSS, GSAP, and Node.js
+            </span>
+            . I thrive on crafting user-centric interfaces that are not just
+            beautiful, but also fast and accessible.
           </p>
 
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-            I'm constantly pushing my skills further into backend systems and scalable architecture to become a fully autonomous engineer who delivers complete solutions.
+            I'm constantly pushing my skills further into backend systems and
+            scalable architecture to become a fully autonomous engineer who
+            delivers complete solutions.
           </p>
         </div>
 
         {/* Right: Optional Image or Skills Block */}
         <div className="flex justify-center md:justify-end">
           <div className="w-full max-w-sm p-6 border border-gray-300 dark:border-gray-700 rounded-xl shadow-lg bg-gray-50 dark:bg-gray-900">
-            <h3 className="text-xl font-semibold mb-4 text-[goldenrod]">
+            <h3 className="text-xl font-semibold mb-4 text-[#FF6F61]">
               Key Strengths
             </h3>
             <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300 list-disc list-inside">

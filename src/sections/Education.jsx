@@ -37,7 +37,7 @@ export default function Education() {
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
       >
-        <h2 className="text-4xl font-bold text-center text-[#DAA520] mb-16">
+        <h2 className="text-4xl font-bold text-center text-[#FF6F61] mb-16">
           Education & Certificates
         </h2>
 
@@ -51,7 +51,7 @@ export default function Education() {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-semibold mb-6">Education</h3>
-            <div className="border-l-2 border-[#DAA520] pl-6 space-y-10">
+            <div className="border-l-2 border-[#FF6F61] pl-6 space-y-10">
               <div>
                 <h4 className="text-lg font-medium">MCA – Chandigarh University</h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">2024 – 2026</p>
@@ -69,8 +69,6 @@ export default function Education() {
                   <li>Core CS Fundamentals</li>
                 </ul>
               </div>
-
-              
             </div>
           </motion.div>
 
